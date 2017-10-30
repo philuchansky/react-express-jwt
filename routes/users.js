@@ -5,5 +5,11 @@ const
 
 usersRouter.route('/')
 	.get(usersCtrl.index)
+	.post(usersCtrl.create)
+
+usersRouter.route('/:id')
+	.get(usersCtrl.show)
+	.patch(usersCtrl.update)
+	.delete(usersCtrl.destroy)
 
 module.exports = usersRouter
