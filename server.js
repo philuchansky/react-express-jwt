@@ -7,6 +7,10 @@ const
 	MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/react-express-jwt',
 	PORT = process.env.PORT || 3001
 
+mongoose.connect(MONGODB_URI, (err) => {
+	console.log(err || `Connected to MongoDB.`)
+})
+
 app.use(logger('dev'))
 app.use(bodyParser.json())
 
