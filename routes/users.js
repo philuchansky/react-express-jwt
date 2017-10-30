@@ -1,10 +1,9 @@
 const
 	express = require('express'),
-	usersRouter = new express.Router()
+	usersRouter = new express.Router(),
+	usersCtrl = require('../controllers/users.js')
 
 usersRouter.route('/')
-	.get((req, res) => {
-		res.json({message: 'Users index.'})
-	})
+	.get(usersCtrl.index)
 
 module.exports = usersRouter
