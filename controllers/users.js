@@ -1,4 +1,5 @@
 const User = require('../models/User.js')
+const signToken = require('../serverAuth.js').signToken
 
 module.exports = {
 	// list all users
@@ -10,6 +11,8 @@ module.exports = {
 
 	// get one user
 	show: (req, res) => {
+		console.log("Current User:")
+		console.log(req.user)
 		User.findById(req.params.id, (err, user) => {
 			res.json(user)
 		})
@@ -37,6 +40,21 @@ module.exports = {
 	destroy: (req, res) => {
 		User.findByIdAndRemove(req.params.id, (err, user) => {
 			res.json({success: true, message: "User deleted.", user})
+		})
+	},
+
+	// the login route
+	authenticate: (req, res) => {
+		// check if the user exists
+		User.findOne({email: req.body.email}, (err, user) => {
+			// if there's no user or the password is invalid
+			if(!user || !user.validPassword(req.body.password)) {
+				// deny access
+				return res.json({success: false, message: "Invalid credentials."})
+			}
+
+			const token = signToken(user)
+			res.json({success: true, message: "Token attached.", token})
 		})
 	}
 }
