@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 
 import NavBar from './NavBar'
 import LogIn from './views/LogIn'
+import LogOut from './views/LogOut'
 import SignUp from './views/SignUp'
 import VIP from './views/VIP'
 import Home from './views/Home'
@@ -16,6 +17,7 @@ class App extends React.Component {
 				<NavBar />
 				<Switch>
 					<Route path="/login" component={LogIn} />
+					<Route path="/logout" component={LogOut} />
 					<Route path="/signup" component={SignUp} />
 					<Route path="/vip" component={VIP} />
 					<Route path="/" component={Home} />
