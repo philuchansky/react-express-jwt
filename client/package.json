@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.17.0",
+    "jwt-decode": "^2.2.0",
     "milligram": "^1.3.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
