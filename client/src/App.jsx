@@ -42,6 +42,7 @@ class App extends React.Component {
 						return <LogOut onLogOut={this.logOut.bind(this)} />
 					}} />
 
+					{/* the sign up component takes an 'onSignUpSuccess' prop which will perform the same thing as onLoginSuccess: set the state to contain the currentUser */}
 					<Route path="/signup" render={(props) => {
 						return <SignUp {...props} onSignUpSuccess={this.onLoginSuccess.bind(this)} />
 					}} />
