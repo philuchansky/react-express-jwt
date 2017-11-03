@@ -26,7 +26,6 @@ class App extends React.Component {
 	}
 	
 	render() {
-		console.log(this.state)
 		const { currentUser } = this.state
 		return (
 			<div className='App'>
@@ -34,13 +33,18 @@ class App extends React.Component {
 				<NavBar currentUser={currentUser} />
 
 				<Switch>
+
 					<Route path="/login" render={(props) => {
 						return <LogIn {...props} onLoginSuccess={this.onLoginSuccess.bind(this)} />
 					}} />
+
 					<Route path="/logout" render={(props) => {
 						return <LogOut onLogOut={this.logOut.bind(this)} />
 					}} />
-					<Route path="/signup" component={SignUp} />
+
+					<Route path="/signup" render={(props) => {
+						return <SignUp {...props} onSignUpSuccess={this.onLoginSuccess.bind(this)} />
+					}} />
 
 					<Route path="/vip" render={() => {
 						return currentUser
@@ -49,6 +53,7 @@ class App extends React.Component {
 					}} />
 
 					<Route path="/" component={Home} />
+
 				</Switch>
 			</div>
 		)

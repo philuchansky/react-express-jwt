@@ -32,6 +32,20 @@ function logIn(credentials) {
 		})
 }
 
+// logIn and signUp functions could be combined into one since the only difference is the url we're sending a request to..
+function signUp(userInfo) {
+	return clientAuth({ method: 'post', url: '/api/users', data: userInfo})
+		.then(res => {
+			const token = res.data.token
+			if(token) {
+				clientAuth.defaults.headers.common.token = setToken(token)
+				return jwtDecode(token)
+			} else {
+				return false
+			}
+		})
+}
+
 function logOut() {
 	localStorage.removeItem('token')
 	delete clientAuth.defaults.headers.common.token
@@ -42,5 +56,6 @@ function logOut() {
 export default {
 	getCurrentUser,
 	logIn,
+	signUp,
 	logOut
 }
