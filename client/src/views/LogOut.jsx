@@ -1,14 +1,14 @@
 import React from 'react'
+import { Redirect } from 'react-router-dom'
 
 class LogOut extends React.Component {
-	state = {}
+
+	componentDidMount() {
+		this.props.onLogOut()
+	}
 	
 	render() {
-		return (
-			<div className='LogOut'>
-				<h1>Log Out (what the ...?)</h1>
-			</div>
-		)
+		return <Redirect to="/login" />
 	}
 }
 
