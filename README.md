@@ -14,6 +14,8 @@ The React client app could easily be restructured to keep current user informati
 
 3. create a `.env` file at the root of the application, adjacent to `server.js`.
 
+   *The only environment variable you **have** to declare in development is `JWT_SECRET`*
+
    In the `.env` file, you can declare the following environment variables: `JWT_SECRET`, `MONGODB_URI`, and `PORT`. For example:
 
    ```
@@ -21,6 +23,8 @@ The React client app could easily be restructured to keep current user informati
    MONGODB_URI=mongodb://localhost/react-express-jwt
    PORT=3001
    ```
+
+
 
 4. It's recommended that you run the api server on port 3001 while developing locally, as the client app will default to port 3000.
 
