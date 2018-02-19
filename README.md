@@ -44,9 +44,8 @@ Here's an example of how you can access the 'current user' from the server side 
 const express = require('express')
 const mySpecialRouter = new express.Router()
 
-///////// JWT AUTH MIDDLEWARE:
+// JWT AUTH MIDDLEWARE:
 const { verifyToken }  = require('../serverAuth.js')
-/////////
 
 const Comment = require('../models/Comment.js')
 
