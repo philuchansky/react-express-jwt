@@ -1,6 +1,8 @@
 import axios from 'axios'
 import jwtDecode from 'jwt-decode'
 
+// During initial app load, instantiate axios, and attempt to set
+// a stored token as a default header for all api requests.
 const clientAuth = axios.create()
 clientAuth.defaults.headers.common.token = getToken()
 
@@ -24,6 +26,7 @@ function logIn(credentials) {
 		.then(res => {
 			const token = res.data.token
 			if(token) {
+				// sets token as an included header for all subsequent api requests
 				clientAuth.defaults.headers.common.token = setToken(token)
 				return jwtDecode(token)
 			} else {
@@ -38,6 +41,7 @@ function signUp(userInfo) {
 		.then(res => {
 			const token = res.data.token
 			if(token) {
+				// sets token as an included header for all subsequent api requests
 				clientAuth.defaults.headers.common.token = setToken(token)
 				return jwtDecode(token)
 			} else {
