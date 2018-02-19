@@ -1,8 +1,4 @@
-body {
-	padding: 20px;
-}
-
-a, button {
+.NavBar a, .NavBar button {
 	margin: 0 5px;
 	cursor: pointer;
 }
