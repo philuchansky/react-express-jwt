@@ -4,13 +4,7 @@
 
 This is an example application that serves an ExpressJS JSON api to a React client application. The React application is configured for a basic JWT authentication flow **WITHOUT** using redux. Great for those of you that are somewhat familiar with Node, Express, and Mongoose, but want to see an implementation of React + React Router with JWT authentication.
 
-### Technologies
-
-- NodeJS + Express + Mongoose on the back
-- React client application on the front
-- React Router 4.*
-- Milligram CSS so it doesn't look like garbage
-- JSON Web Token authentication flow
+The React client app could easily be restructured to keep current user information in a Redux Store. Give it a shot!
 
 ### Installation + Development
 
@@ -42,5 +36,10 @@ This is an example application that serves an ExpressJS JSON api to a React clie
 
 10. $$$ Profit
 
+### Technologies
 
-
+- NodeJS + Express + Mongoose on the back
+- React client application on the front
+- React Router 4.*
+- Milligram CSS so it doesn't look like garbage
+- JSON Web Token authentication flow
