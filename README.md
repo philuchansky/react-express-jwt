@@ -43,3 +43,7 @@ The React client app could easily be restructured to keep current user informati
 - React Router 4.*
 - Milligram CSS so it doesn't look like garbage
 - JSON Web Token authentication flow
+
+### Important Notes
+
+- While the Mongoose user schema enforces email uniqueness, there's no handler for duplicate user emails on the client side. (A user wouldn't know why they couldn't create their account if they came across this scenario).
