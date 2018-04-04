@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import clientAuth from './clientAuth'
+import httpClient from './httpClient'
 
 import NavBar from './NavBar'
 import LogIn from './views/LogIn'
@@ -10,14 +10,14 @@ import VIP from './views/VIP'
 import Home from './views/Home'
 
 class App extends React.Component {
-	state = { currentUser: clientAuth.getCurrentUser() }
+	state = { currentUser: httpClient.getCurrentUser() }
 
 	onLoginSuccess(user) {
-		this.setState({ currentUser: clientAuth.getCurrentUser() })
+		this.setState({ currentUser: httpClient.getCurrentUser() })
 	}
 
 	logOut() {
-		clientAuth.logOut()
+		httpClient.logOut()
 		this.setState({ currentUser: null })
 	}
 	

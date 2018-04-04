@@ -1,5 +1,5 @@
 import React from 'react'
-import clientAuth from '../clientAuth'
+import httpClient from '../httpClient'
 
 // sign up form behaves almost identically to log in form. We could create a flexible Form component to use for both actions, but for now we'll separate the two:
 class SignUp extends React.Component {
@@ -18,7 +18,7 @@ class SignUp extends React.Component {
 
 	onFormSubmit(evt) {
 		evt.preventDefault()
-		clientAuth.signUp(this.state.fields).then(user => {
+		httpClient.signUp(this.state.fields).then(user => {
 			this.setState({ fields: { name: '', email: '', password: '' } })
 			if(user) {
 				this.props.onSignUpSuccess(user)

@@ -1,5 +1,5 @@
 import React from 'react'
-import clientAuth from '../clientAuth'
+import httpClient from '../httpClient'
 
 class LogIn extends React.Component {
 	state = {
@@ -17,7 +17,7 @@ class LogIn extends React.Component {
 
 	onFormSubmit(evt) {
 		evt.preventDefault()
-		clientAuth.logIn(this.state.fields).then(user => {
+		httpClient.logIn(this.state.fields).then(user => {
 			this.setState({ fields: { email: '', password: '' } })
 			if(user) {
 				this.props.onLoginSuccess(user)
