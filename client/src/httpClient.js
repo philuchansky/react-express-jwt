@@ -1,8 +1,7 @@
 import axios from 'axios'
 import jwtDecode from 'jwt-decode'
 
-// During initial app load, instantiate axios, and attempt to set
-// a stored token as a default header for all api requests.
+// instantiate axios
 const httpClient = axios.create()
 
 httpClient.getToken = function() {
@@ -56,5 +55,7 @@ httpClient.logOut = function() {
 	return true
 }
 
+// During initial app load attempt to set a localStorage stored token
+// as a default header for all api requests.
 httpClient.defaults.headers.common.token = httpClient.getToken()
 export default httpClient
