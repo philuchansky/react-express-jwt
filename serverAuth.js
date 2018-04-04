@@ -1,13 +1,14 @@
 const
 	jwt = require('jsonwebtoken'),
-	User = require('./models/User.js')
+	User = require('./models/User.js'),
+	{ JWT_SECRET } = process.env
 
 // function for creating tokens
 function signToken(user) {
 	// toObject() returns a basic js object with only the info from the db
 	const userData = user.toObject()
 	delete userData.password
-	return jwt.sign(userData, process.env.JWT_SECRET)
+	return jwt.sign(userData, JWT_SECRET)
 }
 
 // function for verifying tokens
@@ -17,7 +18,7 @@ function verifyToken(req, res, next) {
 	// if no token present, deny access
 	if(!token) return res.json({success: false, message: "No token provided"})
 	// otherwise, try to verify token
-	jwt.verify(token, process.env.JWT_SECRET, (err, decodedData) => {
+	jwt.verify(token, JWT_SECRET, (err, decodedData) => {
 		// if problem with token verification, deny access
 		if(err) return res.json({success: false, message: "Invalid token."})
 		// otherwise, search for user by id that was embedded in token
