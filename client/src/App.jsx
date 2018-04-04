@@ -10,11 +10,7 @@ import VIP from './views/VIP'
 import Home from './views/Home'
 
 class App extends React.Component {
-	state = { currentUser: null }
-
-	componentDidMount() {
-		this.setState({ currentUser: clientAuth.getCurrentUser() })
-	}
+	state = { currentUser: clientAuth.getCurrentUser() }
 
 	onLoginSuccess(user) {
 		this.setState({ currentUser: clientAuth.getCurrentUser() })
