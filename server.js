@@ -9,7 +9,8 @@ const
 	PORT = process.env.PORT || 3001,
 	usersRoutes = require('./routes/users.js')
 
-mongoose.connect(MONGODB_URI, (err) => {
+mongoose.set('useCreateIndex', true)
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, (err) => {
 	console.log(err || `Connected to MongoDB.`)
 })
 
