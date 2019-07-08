@@ -66,9 +66,8 @@ module.exports = mySpecialRouter
 
 
 ### Technologies
-
-- NodeJS + Express + Mongoose on the back
-- React client application on the front
+- React client application business in the front
+- NodeJS + Express + Mongoose party in the back
 - React Router 4.*
 - Milligram CSS so it doesn't look like garbage
 - JSON Web Token authentication flow
