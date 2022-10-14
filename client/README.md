@@ -1404,7 +1404,7 @@ Example package.json:
   "name": "your-package",
   "jest": {
     "collectCoverageFrom" : [
-      "src/**/*.{js,jsx}",
+      "src/**/*.{js,Home.jsx}",
       "!<rootDir>/node_modules/",
       "!<rootDir>/path/to/dir/"
     ],

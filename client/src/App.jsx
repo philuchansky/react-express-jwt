@@ -26,7 +26,10 @@ class App extends React.Component {
 		return (
 			<div className='App container'>
 
-				<NavBar currentUser={currentUser} />
+				{
+					currentUser && <NavBar currentUser={currentUser} />
+
+				}
 
 				<Switch>
 
@@ -49,7 +52,10 @@ class App extends React.Component {
 							: <Redirect to="/login" />
 					}} />
 
-					<Route path="/" component={Home} />
+					<Route path="/" render={() =>{
+						return currentUser ? <Home /> : <Redirect to="/login" />
+					}
+					} />
 
 				</Switch>
 			</div>
