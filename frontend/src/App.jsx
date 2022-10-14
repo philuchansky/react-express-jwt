@@ -4,9 +4,15 @@ import {useState} from "react";
 
 
 import SignUp from "./Views/SignUp.jsx";
-import Home from "./Views/Home.jsx";
+import Navbar from "./Views/Navbar.jsx";
 import SignIn from "./Views/SignIn.jsx";
 import httpClient from "./httpClient.js";
+import Member from "./Views/Member.jsx";
+import AturKonten from "./Views/AturKonten.jsx";
+import Beranda from "./Views/Beranda.jsx";
+import BuatKonten from "./Views/BuatKonten.jsx";
+import DetailMember from "./Views/DetailMember.jsx";
+import EditMember from "./Views/EditMember.jsx";
 
 function App() {
 
@@ -22,7 +28,14 @@ function App() {
 return(
     <BrowserRouter>
         <Routes>
-        <Route index element={<Home logout={logout} isLogin={username} />} />
+        <Route path="/" element={<Navbar logout={logout} isLogin={username} />} >
+            <Route index element={<Beranda />} />
+            <Route path="member" element={<Member />} />
+            <Route path="buatkonten" element={<BuatKonten />} />
+            <Route path="aturkonten" element={<AturKonten />} />
+            <Route path="member/detail/:username" element={<DetailMember />} />
+            <Route path="member/edit/:username" element={<EditMember />} />
+        </Route>
             <Route path="signup" element={<SignUp login={loginSuccess} isLogin={username}  />} />
             <Route path="signin" element={<SignIn login={loginSuccess} isLogin={username}  /> } />
         </Routes>

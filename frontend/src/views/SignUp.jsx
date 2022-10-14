@@ -28,10 +28,10 @@ function SignUp(props) {
             return;
         }
 
-        if (password.length < 7) {
-            setErrorPassword('Password must be 8 characters long')
-            return;
-        }
+        // if (password.length < 7) {
+        //     setErrorPassword('Password must be 8 characters long')
+        //     return;
+        // }
 
         if (password !== repeatPassword) {
             console.log('password tidak sama')
@@ -45,6 +45,7 @@ function SignUp(props) {
             nama: nama,
             email: email,
             password: password,
+            role: 'member',
         }
 
         const duplicate = await httpClient.cariUser(username).then((res) => {
@@ -63,9 +64,6 @@ function SignUp(props) {
             }
 
         }
-        // console.log(duplicate.username === username)
-
-        console.log("berhasil")
 
 
         httpClient.signUp(data).then(user => {
@@ -92,11 +90,11 @@ function SignUp(props) {
     }
     const passwordChange = (event) => {
         setPassword(event.target.value)
-        if(password.length < 7){
-            setErrorPassword('(Password must be 8 characters long)')
-        } else {
-            setErrorPassword('')
-        }
+        // if(password.length < 7){
+        //     setErrorPassword('(Password must be 8 characters long)')
+        // } else {
+        //     setErrorPassword('')
+        // }
 
         if(event.target.value !== repeatPassword && repeatPassword !== ''){
             setErrorRepeatPassword('(Password not match)')

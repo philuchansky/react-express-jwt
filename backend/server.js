@@ -33,3 +33,4 @@ app.use('/api/users', usersRoutes)
 app.listen(PORT, (err) => {
 	console.log(err || `Server running on port ${PORT}.`)
 })
+

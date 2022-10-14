@@ -24,6 +24,19 @@ httpClient.getAllUsers = function() {
 			return serverResponse.data
 		})
 }
+httpClient.deleteUser = function(nama) {
+	return this({ method: 'delete', url: 'http://localhost:3001/api/users/' + nama })
+		.then((serverResponse) => {
+			return serverResponse.data
+		})
+}
+httpClient.updateUser = function(nama, data) {
+	console.log("masuk update")
+	return this({ method: 'patch', url: 'http://localhost:3001/api/users/' + nama, data: data })
+		.then((serverResponse) => {
+			return serverResponse.data
+		})
+}
 
 httpClient.logIn = function(credentials) {
 	return this({ method: 'post', url: 'http://localhost:3001/api/users/authenticate', data: credentials })

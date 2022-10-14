@@ -5,7 +5,8 @@ const
 		username: {type: String},
 		email: { type: String},
 		nama: { type: String},
-		password: { type: String, }
+		password: { type: String, },
+		role: { type: String, }
 	})
 
 // adds a method to a user document object to create a hashed password

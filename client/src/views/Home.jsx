@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Home = (props) => {
+const Navbar = (props) => {
 	return (
 		<div className='Home'>
 			<h1>React Client App w/ JWT Auth</h1>

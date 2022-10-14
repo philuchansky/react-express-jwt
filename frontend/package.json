@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "axios": "^1.1.2",
+    "daisyui": "^2.31.0",
     "i": "^0.3.7",
     "jwt-decode": "^3.1.2",
     "npm": "^8.19.2",
