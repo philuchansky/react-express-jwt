@@ -112,27 +112,27 @@ function SignUp(props) {
                     <p className='my-2 mb-4'>Already have an account ? <Link to={'/signin'}  className='text-blue-600 hover:text-blue-900 ' >Sign In</Link></p>
                     <form  onSubmit={submit}>
                         <div className="flex flex-col my-2 ">
-                            <label className='mb-1' htmlFor="username">Username
+                            <label  htmlFor="username">Username
                                 <span className="ml-2 text-sm text-red-500">{errorUsername}</span>
                             </label>
                             <input className={'p-2 px-3 border border-gray-400 rounded-md focus:outline-2 focus:outline-blue-500 ' + (errorUsername !== '' ? "border-red-500":'') } type="text" placeholder="Username" name="username" value={username} onChange={usernameChange}  />
                         </div>
                         <div className="flex flex-col my-2 ">
-                            <label className='mb-1' htmlFor="name">Nama Lengkap</label>
+                            <label  htmlFor="name">Nama Lengkap</label>
                             <input className='p-2 px-3 border border-gray-400 rounded-md focus:outline-2 focus:outline-blue-500' type="text" placeholder="Nama Lengkap" name="name" value={nama} onChange={(event) => setNama(event.target.value)}  />
                         </div>
                         <div className="flex flex-col my-2 ">
-                            <label className='mb-1' htmlFor="email">Email</label>
+                            <label  htmlFor="email">Email</label>
                             <input className='p-2 px-3 border border-gray-400 rounded-md focus:outline-2 focus:outline-blue-500' type="email" placeholder="Email" name="email" value={email} onChange={(event) => setEmail(event.target.value)} />
                         </div>
                         <div className="flex flex-col my-2 ">
-                            <label className='mb-1' htmlFor="password">Password
+                            <label  htmlFor="password">Password
                                 <span className="ml-2 text-sm text-red-500">{errorPassword}</span>
                             </label>
                             <input className='p-2 px-3 border border-gray-400 rounded-md focus:outline-2 focus:outline-blue-500' type="password" placeholder="Password" name="password"  value={password} onChange={passwordChange}/>
                         </div>
                         <div className="flex flex-col my-2 ">
-                            <label className='mb-1' htmlFor="password">Konfirmasi Password
+                            <label  htmlFor="password">Konfirmasi Password
                                 <span className="ml-2 text-sm text-red-500">{errorRepeatPassword}</span>
                             </label>
                             <input className={'p-2 px-3 border border-gray-400 rounded-md focus:outline-2 focus:outline-blue-500' + (errorRepeatPassword !== '' ? ' border-red-500':'')} type="password" placeholder="Konfirmasi Password" name="password" value={repeatPassword} onChange={repeatedPasswordChange}/>

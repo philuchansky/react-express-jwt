@@ -23,11 +23,11 @@ function Member() {
     }
 
     return(
-        <div className='p-8 flex justify-center'>
+        <div className='p-8 flex justify-center pt-[100px]'>
         <div className="overflow-x-auto">
-            <table className="table  min-w-[1000px] ">
-                <thead>
-                <tr>
+            <table className="table min-w-screen overflow-x-auto sm:min-w-[1000px]  ">
+                <thead className="headTable">
+                <tr className="headTable"   >
                     <th></th>
                     <th>Nama</th>
                     <th>Email</th>
@@ -43,7 +43,7 @@ function Member() {
                             <td>{item.nama}</td>
                             <td>{item.email}</td>
                             <td>{item.role}</td>
-                            <td>
+                            <td className='actionbutton'>
                                 <Link to={'/member/detail/'+item.username} href="">
                                     <button className="btn btn-info rounded btn-sm">Detail</button>
                                 </Link>

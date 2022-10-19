@@ -13,6 +13,7 @@ import Beranda from "./Views/Beranda.jsx";
 import BuatKonten from "./Views/BuatKonten.jsx";
 import DetailMember from "./Views/DetailMember.jsx";
 import EditMember from "./Views/EditMember.jsx";
+import DetailKonten from "./Views/DetailKonten.jsx";
 
 function App() {
 
@@ -29,12 +30,14 @@ return(
     <BrowserRouter>
         <Routes>
         <Route path="/" element={<Navbar logout={logout} isLogin={username} />} >
-            <Route index element={<Beranda />} />
+            <Route index element={<Beranda  isLogin={username}  />} />
             <Route path="member" element={<Member />} />
-            <Route path="buatkonten" element={<BuatKonten />} />
+            <Route path="buatkonten" element={<BuatKonten  isLogin={username} />} />
             <Route path="aturkonten" element={<AturKonten />} />
             <Route path="member/detail/:username" element={<DetailMember />} />
             <Route path="member/edit/:username" element={<EditMember />} />
+            <Route path="konten/:id" element={<DetailKonten />} />
+
         </Route>
             <Route path="signup" element={<SignUp login={loginSuccess} isLogin={username}  />} />
             <Route path="signin" element={<SignIn login={loginSuccess} isLogin={username}  /> } />

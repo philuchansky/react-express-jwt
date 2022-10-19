@@ -36,7 +36,7 @@ function EditMember(){
     }
 
     return(
-        <div className=" flex justify-center items-center flex-col min-h-full ">
+        <div className=" flex justify-center items-center flex-col min-h-full  pt-[100px]">
             <div className='sm:w-96 w-screen lg:p-8 mt-8 p-6 shadow-xl rounded-md border-[.6px]'>
                 <h1 className="text-3xl font-bold my-4">Update Data</h1>
                 <form onSubmit={onsubmit} >

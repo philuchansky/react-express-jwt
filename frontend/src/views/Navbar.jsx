@@ -15,7 +15,7 @@ function Navbar(props) {
 
     return(
         <>
-        <nav className="navbar bg-base-100 shadow-md">
+        <nav className="navbar bg-base-100 shadow-md fixed z-50">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -36,12 +36,12 @@ function Navbar(props) {
                         <li><a>Item 3</a></li>
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost normal-case text-xl">INFO</Link>
+                <Link to='/' className="btn btn-ghost normal-case text-xl">Home</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
                     <li><Link to={'/buatkonten'}>Buat Konten</Link></li>
-                    <li><Link to={'/member'}>Member</Link></li>
+                    <li><Link to={'/member'}>Atur Member</Link></li>
                     <li><Link to={'/aturkonten'}>Atur Konten</Link></li>
                 </ul>
             </div>

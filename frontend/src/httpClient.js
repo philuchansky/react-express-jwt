@@ -80,6 +80,31 @@ httpClient.logOut = function() {
 	return true
 }
 
+httpClient.createKonten = function(konten) {
+	return this({ method: 'post', url: 'http://localhost:3001/api/konten', data: konten})
+		.then((serverResponse) => {
+			return serverResponse.data
+		})
+}
+httpClient.getAllKonten = function() {
+	return this({ method: 'get', url: 'http://localhost:3001/api/konten/' })
+		.then((serverResponse) => {
+			return serverResponse.data
+		})
+}
+httpClient.getKontenById = function(id) {
+	return this({ method: 'get', url: 'http://localhost:3001/api/konten/' + id })
+		.then((serverResponse) => {
+			return serverResponse.data
+		})
+}
+httpClient.deleteKontenById = function(id) {
+	return this({ method: 'delete', url: 'http://localhost:3001/api/konten/' + id })
+		.then((serverResponse) => {
+			return serverResponse.data
+		})
+}
+
 // During initial app load attempt to set a localStorage stored token
 // as a default header for all api requests.
 httpClient.defaults.headers.common.token = httpClient.getToken()
