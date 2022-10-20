@@ -6,10 +6,16 @@ import {useParams} from "react-router-dom";
 function EditKonten(props) {
     const [value, setValue] = useState('');
     const [title, setTitle] = useState('');
+    const [username, setUsername] = useState(props.isLogin.username);
+    const [user, setUser] = useState(props.isLogin);
     const {id} = useParams()
 
     useEffect(
         () => {
+            if(user.role !== "admin"){
+                window.location.href = "/"
+            }
+
             httpClient.getKontenById(id).then((res) => {
                 setTitle(res.title)
                 setValue(res.content)
@@ -31,11 +37,12 @@ function EditKonten(props) {
         event.preventDefault()
         console.log(value)
         let data = {
+            user : username,
             title: title,
             content: value,
         }
-        httpClient.createKonten(data).then((res) => {
-            window.location.href = "/konten/" + res.id
+        httpClient.updateKontenById(id,data).then((res) => {
+            window.location.href = "/konten/" + id
         })
     }
 

@@ -2,9 +2,10 @@ import httpClient from "../httpClient.js";
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
-function AturKonten() {
+function AturKonten(props) {
 
     const [data, setData] = useState([]);
+    const [user, setUser] = useState(props.isLogin);
 
     useEffect(() => {
         httpClient.getAllKonten().then((res)  => {
@@ -25,11 +26,11 @@ function AturKonten() {
                 <table className="table min-w-screen overflow-x-auto sm:min-w-[1100px] max-w-screen">
                     <thead  >
                     <tr className="headTable" >
-                        <th></th>
-                        <th className="titletab">Judul Konten</th>
-                        <th>Tanggal Posting</th>
-                        <th>Diposting Oleh</th>
-                        <th>Action</th>
+                        <th className="headTable"></th>
+                        <th  className="headTable">Judul Konten</th>
+                        <th className="headTable">Tanggal Posting</th>
+                        <th className="headTable">Diposting Oleh</th>
+                        <th className="headTable">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -42,12 +43,20 @@ function AturKonten() {
                                 <td>{item.user}</td>
                                 <td className="actionbutton">
                                     <Link to={'/konten/'+item._id} href="">
-                                        <button className="btn btn-info rounded btn-sm">Detail</button>
+                                        <button className="btn btn-info rounded btn-sm text-white">Detail</button>
                                     </Link>
-                                    <Link to={'/konten/edit/'+item._id} href="">
-                                        <button className="btn btn-success mx-2 rounded btn-sm">Edit</button>
-                                    </Link>
-                                    <button onClick={() => handleDelete(item._id)} className="btn btn-error rounded btn-sm">Delete</button>
+                                    {
+                                        user.role === 'admin' ? (
+                                            <>
+                                                <Link to={'/konten/edit/'+item._id} href="">
+                                                    <button className="btn btn-success mx-2 rounded btn-sm text-white">Edit</button>
+                                                </Link>
+                                                <button onClick={() => handleDelete(item._id)} className="btn btn-error rounded btn-sm text-white">Delete</button>
+
+                                            </>
+                                        ):null
+                                    }
+
 
                                 </td>
                             </tr>

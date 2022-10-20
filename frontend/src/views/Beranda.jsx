@@ -32,10 +32,10 @@ function Beranda(props) {
                 {
                     allKonten.map((item, index) => {
                         return(
-                        <Link key={index}  className="border-[.1em] p-6 rounded-md shadow-sm " to={"/konten/"+item._id}>
-                            <h1 className="font-semibold text-xl ">{item.title}</h1>
-                            <p className='my-1'>{item.date.substring(0, 10)} | {readingTime(handleHTML(item.content))} min read</p>
-                            <div className="line-clamp-3">{handleHTML(item.content)}</div>
+                        <Link key={index}  className="card border-[.1em] bg-white p-6 rounded-md shadow-sm hover:drop-shadow-sm hover:border-blue-500 transition " to={"/konten/"+item._id}>
+                            <h1 className="font-semibold text-xl tit ">{item.title}</h1>
+                            <p className='my-1 font-semibold text-sm'>{item.date.substring(0, 10)} | {readingTime(handleHTML(item.content))} min read</p>
+                            <div className="line-clamp-3 text-gray-500">{handleHTML(item.content)}</div>
                         </Link>
                         )
                     })

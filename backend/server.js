@@ -7,7 +7,8 @@ const
 	mongoose = require('mongoose'),
 	MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/react-express-jwt',
 	PORT = process.env.PORT || 3001,
-	usersRoutes = require('./routes/users.js')
+	usersRoutes = require('./routes/users.js'),
+	kontenRoutes = require('./routes/Konten.js')
 var cors = require('cors')
 app.use(cors())
 var corsOptions = {
@@ -18,7 +19,8 @@ mongoose.set('useCreateIndex', true)
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, (err) => {
 	console.log(err || `Connected to MongoDB.`)
 })
-
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 app.use(logger('dev'))
 app.use(bodyParser.json())
 
@@ -27,6 +29,7 @@ app.get('/api',cors(corsOptions), (req, res) => {
 });
 
 app.use('/api/users', usersRoutes)
+app.use('/api/konten', kontenRoutes)
 
 
 

@@ -1,6 +1,7 @@
 import httpClient from '../httpClient.js'
-import {useMemo} from "react";
+import {useMemo, useState} from "react";
 import { Outlet, Link } from "react-router-dom";
+
 
 
 function Navbar(props) {
@@ -11,6 +12,7 @@ function Navbar(props) {
     }, []);
 
 
+    const [user, setUser] = useState(props.isLogin)
 
 
     return(
@@ -46,7 +48,21 @@ function Navbar(props) {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a onClick={props.logout} className="btn rounded bg-red-600 border-none hover:bg-red-700 ">Log Out</a>
+                <div className="dropdown dropdown-end">
+                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                        <div className="w-10 rounded-full">
+                            <img src="https://placeimg.com/80/80/people" />
+                        </div>
+                    </label>
+                    <ul tabIndex={0} className="mt-3 p-2 shadow-lg menu menu-compact dropdown-content bg-base-100 rounded-md w-52">
+                        <li>
+                            <Link className="justify-between" to={'/member/edit/'+user.username}>
+                                Profile
+                            </Link>
+                        </li>
+                        <li><a onClick={props.logout} >Logout</a></li>
+                    </ul>
+                </div>
             </div>
         </nav>
             <Outlet />

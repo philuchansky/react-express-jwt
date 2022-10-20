@@ -2,15 +2,22 @@ import {Link, useParams} from "react-router-dom";
 import { redirect } from "react-router-dom";
 import {useEffect, useState} from "react";
 import httpClient from "../httpClient.js";
-function EditMember(){
+function EditMember(props){
     const [nama, setNama] = useState('')
     const [email, setEmail] = useState('')
     const [role, setRole] = useState('')
     const [id, setId] = useState('')
     const [data, setData] = useState([])
     let { username } = useParams();
+    const [user, setUser] = useState(props.isLogin)
+
+
 
     useEffect(() => {
+        if (user.role !== 'admin' && user.username !== username) {
+            window.location.href = '/'
+        }
+
         httpClient.cariUser(username).then((res) => {
             setData(res)
             setNama(res.nama)
@@ -53,13 +60,20 @@ function EditMember(){
                         <label className='mb-1' htmlFor="email">Email</label>
                         <input className='p-2 px-3 border border-gray-400 rounded-md focus:outline-2 focus:outline-blue-500' type="email" placeholder="Email" name="email" value={email} onChange={(event) => setEmail(event.target.value)} />
                     </div>
-                    <div className="flex flex-col my-2 ">
-                        <label className='mb-1' htmlFor="role">Role</label>
-                        <select className='p-2 px-3 border border-gray-400 rounded-md focus:outline-2 focus:outline-blue-500' name="role" value={role} onChange={(event) => setRole(event.target.value)}>
-                            <option value="admin">Admin</option>
-                            <option value="member">Member</option>
-                        </select>
-                    </div>
+                    {
+                        user.role === 'admin' ? (
+                            <div className="flex flex-col my-2 ">
+                                <label className='mb-1' htmlFor="role">Role</label>
+                                <select className='p-2 px-3 border border-gray-400 rounded-md focus:outline-2 focus:outline-blue-500' name="role" value={role} onChange={(event) => setRole(event.target.value)}>
+                                    <option value="admin">Admin</option>
+                                    <option value="member">Member</option>
+                                </select>
+                            </div>
+                        ) : null
+
+
+                    }
+
                     <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 mt-4 px-4 rounded my-2 w-full'>Update Data</button>
 
                 </form>

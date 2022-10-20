@@ -7,7 +7,7 @@ import SignUp from "./Views/SignUp.jsx";
 import Navbar from "./Views/Navbar.jsx";
 import SignIn from "./Views/SignIn.jsx";
 import httpClient from "./httpClient.js";
-import Member from "./Views/Member.jsx";
+import AturMember from "./Views/AturMember.jsx";
 import AturKonten from "./Views/AturKonten.jsx";
 import Beranda from "./Views/Beranda.jsx";
 import BuatKonten from "./Views/BuatKonten.jsx";
@@ -32,13 +32,13 @@ return(
         <Routes>
         <Route path="/" element={<Navbar logout={logout} isLogin={username} />} >
             <Route index element={<Beranda  isLogin={username}  />} />
-            <Route path="member" element={<Member />} />
+            <Route path="member" element={<AturMember isLogin={username} />} />
             <Route path="buatkonten" element={<BuatKonten  isLogin={username} />} />
-            <Route path="aturkonten" element={<AturKonten />} />
-            <Route path="member/detail/:username" element={<DetailMember />} />
-            <Route path="member/edit/:username" element={<EditMember />} />
-            <Route path="konten/:id" element={<DetailKonten />} />
-            <Route path="konten/edit/:id" element={<EditKonten />} />
+            <Route path="aturkonten" element={<AturKonten isLogin={username}/>} />
+            <Route path="member/detail/:username" element={<DetailMember isLogin={username}/>} />
+            <Route path="member/edit/:username" element={<EditMember isLogin={username}/>} />
+            <Route path="konten/:id" element={<DetailKonten isLogin={username}/>} />
+            <Route path="konten/edit/:id" element={<EditKonten  isLogin={username}/>} />
 
         </Route>
             <Route path="signup" element={<SignUp login={loginSuccess} isLogin={username}  />} />
