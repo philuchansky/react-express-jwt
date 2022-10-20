@@ -1,5 +1,5 @@
 import './App.css'
-import {BrowserRouter, HashRouter, Route, Routes} from "react-router-dom";
+import {BrowserRouter, HashRouter, Route, Routes, Navigate} from "react-router-dom";
 import {useState} from "react";
 
 
@@ -39,10 +39,13 @@ return(
             <Route path="member/edit/:username" element={<EditMember isLogin={username}/>} />
             <Route path="konten/:id" element={<DetailKonten isLogin={username}/>} />
             <Route path="konten/edit/:id" element={<EditKonten  isLogin={username}/>} />
-
         </Route>
             <Route path="signup" element={<SignUp login={loginSuccess} isLogin={username}  />} />
             <Route path="signin" element={<SignIn login={loginSuccess} isLogin={username}  /> } />
+            <Route
+                path="*"
+                element={<Navigate to="/" replace />}
+            />
         </Routes>
     </BrowserRouter>
 

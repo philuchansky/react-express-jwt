@@ -59,5 +59,11 @@ module.exports = {
 			const token = signToken(user)
 			res.json({success: true, message: "Token attached.", token})
 		})
+	},
+	showByEmail: (req, res) => {
+		User.findOne({email: req.params.email}, (err, user) => {
+			res.json(user)
+		}
+		)
 	}
 }

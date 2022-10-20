@@ -26,7 +26,7 @@ function AturMember(props) {
 
     return(
         <div className='p-8 flex justify-center pt-[100px]'>
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto  border-[1px] shadow-md rounded-md">
             <table className="table min-w-screen overflow-x-auto min-w-[1100px]   ">
                 <thead className="headTable">
                 <tr className="headTable"   >
@@ -50,7 +50,7 @@ function AturMember(props) {
                                     <button className="btn btn-info rounded btn-sm text-white">Detail</button>
                                 </Link>
                                 {
-                                    user.role === 'admin' ? (
+                                    user.role === 'admin' && item.role !== 'admin' ? (
                                         <>
                                         <Link to={'/member/edit/'+item.username} href="">
                                             <button className="btn btn-success mx-2 rounded btn-sm text-white">Edit</button>

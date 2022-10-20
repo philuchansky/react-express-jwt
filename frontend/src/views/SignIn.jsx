@@ -1,18 +1,19 @@
 import {useEffect, useMemo, useState} from "react";
 import bg from '../assets/bg.jpg'
 import httpClient from '../httpClient.js'
-import {Link} from "react-router-dom";
+import {Link,Navigate} from "react-router-dom";
 
 function SignIn(props) {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [error, setError] = useState('')
 
-    useMemo(() => {
-        if(props.isLogin){
-            window.location.href = '/'
-        }
-    }, []);
+
+    if (props.isLogin) {
+        return (
+        <Navigate to="/" />
+        )
+    }
 
 
 

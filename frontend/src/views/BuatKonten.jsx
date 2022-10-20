@@ -1,6 +1,8 @@
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import {useEffect, useState} from "react";
+import {Navigate} from "react-router-dom";
+
 import httpClient from "../httpClient.js";
 function BuatKonten(props) {
     const [value, setValue] = useState('');
@@ -28,6 +30,11 @@ function BuatKonten(props) {
         httpClient.createKonten(data).then((res) => {
             window.location.href = "/konten/" + res.id
         })
+    }
+    if (props.isLogin.role !== 'admin') {
+        return (
+            <Navigate to="/"/>
+        )
     }
 
 return (

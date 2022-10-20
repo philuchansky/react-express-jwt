@@ -1,7 +1,7 @@
 import {useMemo, useState} from "react";
 import bg from '../assets/bg.jpg'
 import httpClient from '../httpClient.js'
-import {Link} from "react-router-dom";
+import {Link, Navigate} from "react-router-dom";
 
 function SignUp(props) {
     const [username, setUsername] = useState('')
@@ -12,14 +12,14 @@ function SignUp(props) {
     const [errorUsername, setErrorUsername] = useState('')
     const [errorPassword, setErrorPassword] = useState('')
     const [errorRepeatPassword, setErrorRepeatPassword] = useState('')
+    const [errorEmail, setErrorEmail] = useState('')
 
-    useMemo(() => {
+
         if(props.isLogin){
-            window.location.href = '/'
+            return (
+            <Navigate to="/" />
+            )
         }
-    }, []);
-
-
 
     const submit = async (event) => {
         event.preventDefault();
@@ -57,20 +57,25 @@ function SignUp(props) {
                 console.log('username sudah ada')
                 return;
             }
-            if (duplicate.email === email) {
-                setErrorUsername('(Email already exist)')
+        }
+
+        const emailDuplicate = await httpClient.cariEmail(email).then((res) => {
+            return res;
+        });
+        if (emailDuplicate){
+            if (emailDuplicate.email === email) {
+                setErrorEmail('(Email already in use)')
                 console.log('email sudah ada')
                 return;
             }
-
         }
+
 
 
         httpClient.signUp(data).then(user => {
             if (user) {
                 console.log(user)
                 props.login(user.username)
-                window.location.href = '/'
             }
         })
 
@@ -80,6 +85,11 @@ function SignUp(props) {
         setUsername(event.target.value)
         setErrorUsername('')
     }
+    const emailChange = (event) => {
+        setEmail(event.target.value)
+        setErrorEmail('')
+    }
+
     const repeatedPasswordChange = (event) => {
         setRepeatPassword(event.target.value)
         if(event.target.value !== password){
@@ -122,8 +132,10 @@ function SignUp(props) {
                             <input className='p-2 px-3 border border-gray-400 rounded-md focus:outline-2 focus:outline-blue-500' type="text" placeholder="Nama Lengkap" name="name" value={nama} onChange={(event) => setNama(event.target.value)}  />
                         </div>
                         <div className="flex flex-col my-2 ">
-                            <label  htmlFor="email">Email</label>
-                            <input className='p-2 px-3 border border-gray-400 rounded-md focus:outline-2 focus:outline-blue-500' type="email" placeholder="Email" name="email" value={email} onChange={(event) => setEmail(event.target.value)} />
+                            <label  htmlFor="email">Email
+                                <span className="ml-2 text-sm text-red-500">{errorEmail}</span>
+                            </label>
+                            <input className='p-2 px-3 border border-gray-400 rounded-md focus:outline-2 focus:outline-blue-500' type="email" placeholder="Email" name="email" value={email} onChange={emailChange} />
                         </div>
                         <div className="flex flex-col my-2 ">
                             <label  htmlFor="password">Password

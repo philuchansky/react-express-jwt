@@ -1,23 +1,26 @@
 import httpClient from '../httpClient.js'
 import {useMemo, useState} from "react";
-import { Outlet, Link } from "react-router-dom";
-
+import { Outlet, Link, Navigate } from "react-router-dom";
+import avatar from "../assets/avater.png";
 
 
 function Navbar(props) {
-    useMemo(() => {
-        if(!props.isLogin){
-            window.location.href = '/signin'
-        }
-    }, []);
+
 
 
     const [user, setUser] = useState(props.isLogin)
 
-
+    if(!props.isLogin){
+        return (
+            <div>
+                <Navigate to="/signin" />
+            </div>
+        )
+    }
     return(
+
         <>
-        <nav className="navbar bg-base-100 shadow-md fixed z-50">
+        <nav className="navbar bg-[#0A0A23] text-white shadow-md fixed px-8 z-50">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -38,29 +41,34 @@ function Navbar(props) {
                         <li><a>Item 3</a></li>
                     </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost normal-case text-xl">Home</Link>
+                <Link to='/' className="btn btn-ghost normal-case text-xl hover:bg-blue-700">Home</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
-                    <li><Link to={'/buatkonten'}>Buat Konten</Link></li>
-                    <li><Link to={'/member'}>Atur Member</Link></li>
-                    <li><Link to={'/aturkonten'}>Atur Konten</Link></li>
+                    {
+                        user.role === 'admin' ? (
+                            <>
+                            <li><Link  className="hover:bg-blue-700" to={'/buatkonten'}>Buat Konten</Link></li>
+                            </>) : null
+                            }
+                    <li><Link className="hover:bg-blue-700" to={'/member'}>Daftar Member</Link></li>
+                    <li><Link  className="hover:bg-blue-700" to={'/aturkonten'}>Daftar Konten</Link></li>
                 </ul>
             </div>
             <div className="navbar-end">
-                <div className="dropdown dropdown-end">
+                <div className="dropdown dropdown-end ">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
-                            <img src="https://placeimg.com/80/80/people" />
+                        <div className="w-10 rounded-full border-2 border-blue-700">
+                            <img src={avatar} />
                         </div>
                     </label>
-                    <ul tabIndex={0} className="mt-3 p-2 shadow-lg menu menu-compact dropdown-content bg-base-100 rounded-md w-52">
+                    <ul tabIndex={0} className="mt-3 p-2 bg-[#0A0A23] text-white hover:bg-700  shadow-lg menu menu-compact dropdown-content rounded-md w-52">
                         <li>
-                            <Link className="justify-between" to={'/member/edit/'+user.username}>
+                            <Link className="justify-between hover:bg-blue-700" to={'/member/edit/'+user.username}>
                                 Profile
                             </Link>
                         </li>
-                        <li><a onClick={props.logout} >Logout</a></li>
+                        <li ><a className="hover:bg-blue-700" onClick={props.logout} >Logout</a></li>
                     </ul>
                 </div>
             </div>

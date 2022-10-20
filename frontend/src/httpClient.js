@@ -110,6 +110,12 @@ httpClient.updateKontenById = function(id, konten) {
 			return serverResponse.data
 		})
 }
+httpClient.cariEmail = function(email) {
+	return this({ method: 'get', url: 'http://localhost:3001/api/users/email/' + email })
+		.then((serverResponse) => {
+			return serverResponse.data
+		})
+}
 
 // During initial app load attempt to set a localStorage stored token
 // as a default header for all api requests.

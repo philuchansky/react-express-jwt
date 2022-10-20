@@ -43,14 +43,14 @@ function EditMember(props){
     }
 
     return(
-        <div className=" flex justify-center items-center flex-col min-h-full  pt-[100px]">
-            <div className='sm:w-96 w-screen lg:p-8 mt-8 p-6 shadow-xl rounded-md border-[.6px]'>
+        <div className=" flex justify-center items-center flex-col min-h-full  pt-[80px]">
+            <div className='sm:w-96 w-screen lg:p-8 mt-8 bg-white p-6 shadow-xl rounded-md border-[.6px]'>
                 <h1 className="text-3xl font-bold my-4">Update Data</h1>
                 <form onSubmit={onsubmit} >
                     <div className="flex flex-col my-2 ">
                         <label className='mb-1' htmlFor="username">Username
                         </label>
-                        <input disabled className={'p-2 px-3 border border-gray-400 rounded-md focus:outline-2 focus:outline-blue-500 ' } type="text" placeholder="Username" name="username" value={username} onChange={(event) => setUsername(event.target.value)} />
+                        <input disabled className={'p-2 px-3 border cursor-not-allowed border-gray-400 rounded-md focus:outline-2 focus:outline-blue-500 ' } type="text" placeholder="Username" name="username" value={username} onChange={(event) => setUsername(event.target.value)} />
                     </div>
                     <div className="flex flex-col my-2 ">
                         <label className='mb-1' htmlFor="name">Nama Lengkap</label>
@@ -61,7 +61,7 @@ function EditMember(props){
                         <input className='p-2 px-3 border border-gray-400 rounded-md focus:outline-2 focus:outline-blue-500' type="email" placeholder="Email" name="email" value={email} onChange={(event) => setEmail(event.target.value)} />
                     </div>
                     {
-                        user.role === 'admin' ? (
+                        user.role === 'admin' && user.username !== role ? (
                             <div className="flex flex-col my-2 ">
                                 <label className='mb-1' htmlFor="role">Role</label>
                                 <select className='p-2 px-3 border border-gray-400 rounded-md focus:outline-2 focus:outline-blue-500' name="role" value={role} onChange={(event) => setRole(event.target.value)}>
