@@ -26,7 +26,7 @@ function BuatKonten(props) {
             content: value,
         }
         httpClient.createKonten(data).then((res) => {
-            console.log(res)
+            window.location.href = "/konten/" + res.id
         })
     }
 

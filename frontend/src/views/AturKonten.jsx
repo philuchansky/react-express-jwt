@@ -22,11 +22,11 @@ function AturKonten() {
     return(
         <div className='p-8 flex justify-center  pt-[100px]'>
             <div className="overflow-x-auto ">
-                <table className="table">
+                <table className="table min-w-screen overflow-x-auto sm:min-w-[1100px] max-w-screen">
                     <thead  >
                     <tr className="headTable" >
                         <th></th>
-                        <th >Judul Konten</th>
+                        <th className="titletab">Judul Konten</th>
                         <th>Tanggal Posting</th>
                         <th>Diposting Oleh</th>
                         <th>Action</th>
@@ -37,14 +37,16 @@ function AturKonten() {
                         return(
                             <tr key={index}>
                                 <td>{index + 1}</td>
-                                <td>{item.title}</td>
+                                <td className="titletab">{item.title}</td>
                                 <td>{item.date.substring(0, 10)}</td>
                                 <td>{item.user}</td>
-                                <td>
+                                <td className="actionbutton">
                                     <Link to={'/konten/'+item._id} href="">
                                         <button className="btn btn-info rounded btn-sm">Detail</button>
                                     </Link>
-                                    <button className="btn btn-success mx-2 rounded btn-sm">Edit</button>
+                                    <Link to={'/konten/edit/'+item._id} href="">
+                                        <button className="btn btn-success mx-2 rounded btn-sm">Edit</button>
+                                    </Link>
                                     <button onClick={() => handleDelete(item._id)} className="btn btn-error rounded btn-sm">Delete</button>
 
                                 </td>

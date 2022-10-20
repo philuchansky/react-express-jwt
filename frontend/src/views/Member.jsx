@@ -25,7 +25,7 @@ function Member() {
     return(
         <div className='p-8 flex justify-center pt-[100px]'>
         <div className="overflow-x-auto">
-            <table className="table min-w-screen overflow-x-auto sm:min-w-[1000px]  ">
+            <table className="table min-w-screen overflow-x-auto min-w-[1100px]   ">
                 <thead className="headTable">
                 <tr className="headTable"   >
                     <th></th>

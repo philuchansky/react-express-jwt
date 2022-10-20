@@ -62,3 +62,9 @@
 .actionbutton{
     width: 250px !important;
 }
+.titletab{
+    width: 50px !important;
+    min-width: 300px !important;
+    max-width: 450px;
+    overflow: auto;
+}

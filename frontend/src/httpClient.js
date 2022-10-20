@@ -104,6 +104,12 @@ httpClient.deleteKontenById = function(id) {
 			return serverResponse.data
 		})
 }
+httpClient.updateKontenById = function(id, konten) {
+	return this({ method: 'patch', url: 'http://localhost:3001/api/konten/' + id, data: konten })
+		.then((serverResponse) => {
+			return serverResponse.data
+		})
+}
 
 // During initial app load attempt to set a localStorage stored token
 // as a default header for all api requests.

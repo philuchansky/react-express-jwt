@@ -1,5 +1,6 @@
 import httpClient from "../httpClient.js";
 import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
 
 function Beranda(props) {
 
@@ -16,7 +17,7 @@ function Beranda(props) {
 
    const handleHTML = (html) => {
        let clean = html.replace(/(<([^>]+)>)/ig,"");
-return clean;
+        return clean;
     }
 
     function readingTime(textinput) {
@@ -31,11 +32,11 @@ return clean;
                 {
                     allKonten.map((item, index) => {
                         return(
-                        <div key={index}  className="border-[.1em] p-6 rounded-md shadow-sm ">
+                        <Link key={index}  className="border-[.1em] p-6 rounded-md shadow-sm " to={"/konten/"+item._id}>
                             <h1 className="font-semibold text-xl ">{item.title}</h1>
                             <p className='my-1'>{item.date.substring(0, 10)} | {readingTime(handleHTML(item.content))} min read</p>
                             <div className="line-clamp-3">{handleHTML(item.content)}</div>
-                        </div>
+                        </Link>
                         )
                     })
                 }
