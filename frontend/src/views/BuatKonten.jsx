@@ -7,7 +7,7 @@ import httpClient from "../httpClient.js";
 function BuatKonten(props) {
     const [value, setValue] = useState('');
     const [title, setTitle] = useState('');
-    const [username, setUsername] = useState(props.isLogin.username)
+    // const [username, setUsername] = useState(props.isLogin.username)
 
 
     let modules = {
@@ -23,7 +23,7 @@ function BuatKonten(props) {
         event.preventDefault()
         console.log(value)
         let data = {
-            user : username,
+            // user : username,
             title: title,
             content: value,
         }
@@ -31,11 +31,11 @@ function BuatKonten(props) {
             window.location.href = "/konten/" + res.id
         })
     }
-    if (props.isLogin.role !== 'admin') {
-        return (
-            <Navigate to="/"/>
-        )
-    }
+    // if (props.isLogin.role !== 'admin') {
+    //     return (
+    //         <Navigate to="/"/>
+    //     )
+    // }
 
 return (
     <div className="py-12 w-full px-32  pt-[100px]">

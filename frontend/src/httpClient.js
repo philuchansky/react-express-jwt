@@ -4,6 +4,10 @@ import jwtDecode from 'jwt-decode'
 // instantiate axios
 const httpClient = axios.create()
 
+//allow cors
+httpClient.defaults.withCredentials = true
+//cors from nodejs
+
 httpClient.getToken = function() {
 	return localStorage.getItem('token')
 }
@@ -19,27 +23,27 @@ httpClient.getCurrentUser = function() {
 	return null
 }
 httpClient.getAllUsers = function() {
-	return this({ method: 'get', url: 'https://apippk.nubisub.xyz/api/users/' })
+	return this({ method: 'get', url: 'http://localhost:3001/api/users/' })
 		.then((serverResponse) => {
 			return serverResponse.data
 		})
 }
 httpClient.deleteUser = function(nama) {
-	return this({ method: 'delete', url: 'https://apippk.nubisub.xyz/api/users/' + nama })
+	return this({ method: 'delete', url: 'http://localhost:3001/api/users/' + nama })
 		.then((serverResponse) => {
 			return serverResponse.data
 		})
 }
 httpClient.updateUser = function(nama, data) {
 	console.log("masuk update")
-	return this({ method: 'patch', url: 'https://apippk.nubisub.xyz/api/users/' + nama, data: data })
+	return this({ method: 'patch', url: 'http://localhost:3001/api/users/' + nama, data: data })
 		.then((serverResponse) => {
 			return serverResponse.data
 		})
 }
 
 httpClient.logIn = function(credentials) {
-	return this({ method: 'post', url: 'https://apippk.nubisub.xyz/api/users/authenticate', data: credentials })
+	return this({ method: 'post', url: 'http://localhost:3001/api/users/authenticate/', data: credentials})
 		.then((serverResponse) => {
 			const token = serverResponse.data.token
 			if(token) {
@@ -54,7 +58,7 @@ httpClient.logIn = function(credentials) {
 
 // logIn and signUp functions could be combined into one since the only difference is the url we're sending a request to..
 httpClient.signUp = function(userInfo) {
-	return this({ method: 'post', url: 'https://apippk.nubisub.xyz/api/users', data: userInfo})
+	return this({ method: 'post', url: 'http://localhost:3001/api/users', data: userInfo})
 		.then((serverResponse) => {
 			const token = serverResponse.data.token
 			if(token) {
@@ -68,7 +72,7 @@ httpClient.signUp = function(userInfo) {
 }
 
 httpClient.cariUser = function(username) {
-	return this({ method: 'get', url: 'https://apippk.nubisub.xyz/api/users/' + username })
+	return this({ method: 'get', url: 'http://localhost:3001/api/users/' + username })
 		.then((serverResponse) => {
 			return serverResponse.data
 		})
@@ -81,37 +85,37 @@ httpClient.logOut = function() {
 }
 
 httpClient.createKonten = function(konten) {
-	return this({ method: 'post', url: 'https://apippk.nubisub.xyz/api/konten', data: konten})
+	return this({ method: 'post', url: 'http://localhost:3001/api/konten', data: konten})
 		.then((serverResponse) => {
 			return serverResponse.data
 		})
 }
 httpClient.getAllKonten = function() {
-	return this({ method: 'get', url: 'https://apippk.nubisub.xyz/api/konten/' })
+	return this({ method: 'get', url: 'http://localhost:3001/api/konten/' })
 		.then((serverResponse) => {
 			return serverResponse.data
 		})
 }
 httpClient.getKontenById = function(id) {
-	return this({ method: 'get', url: 'https://apippk.nubisub.xyz/api/konten/' + id })
+	return this({ method: 'get', url: 'http://localhost:3001/api/konten/' + id })
 		.then((serverResponse) => {
 			return serverResponse.data
 		})
 }
 httpClient.deleteKontenById = function(id) {
-	return this({ method: 'delete', url: 'https://apippk.nubisub.xyz/api/konten/' + id })
+	return this({ method: 'delete', url: 'http://localhost:3001/api/konten/' + id })
 		.then((serverResponse) => {
 			return serverResponse.data
 		})
 }
 httpClient.updateKontenById = function(id, konten) {
-	return this({ method: 'patch', url: 'https://apippk.nubisub.xyz/api/konten/' + id, data: konten })
+	return this({ method: 'patch', url: 'http://localhost:3001/api/konten/' + id, data: konten })
 		.then((serverResponse) => {
 			return serverResponse.data
 		})
 }
 httpClient.cariEmail = function(email) {
-	return this({ method: 'get', url: 'https://apippk.nubisub.xyz/api/users/email/' + email })
+	return this({ method: 'get', url: 'http://localhost:3001/api/users/email/' + email })
 		.then((serverResponse) => {
 			return serverResponse.data
 		})
@@ -120,4 +124,8 @@ httpClient.cariEmail = function(email) {
 // During initial app load attempt to set a localStorage stored token
 // as a default header for all api requests.
 httpClient.defaults.headers.common.token = httpClient.getToken()
+//header
+//mode cors from nodejs
+
+
 export default httpClient

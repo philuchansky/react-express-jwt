@@ -10,12 +10,16 @@ const
 	usersRoutes = require('./routes/users.js'),
 	kontenRoutes = require('./routes/Konten.js')
 
-var cors = require('cors')
-app.use(cors())
-var corsOptions = {
-	origin: 'http://127.0.0.1:5173/',
-	optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
+const cors = require('cors')
+app.use(cors(
+	{
+		origin: 'http://127.0.0.1:5173',
+		credentials: true,
+		allowedHeaders: ['Content-Type', 'Authorization','X-Auth-Token']
+	}
+))
+
+
 mongoose.set('useCreateIndex', true)
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, (err) => {
 	console.log(err || `Connected to MongoDB.`)
@@ -26,7 +30,7 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 
 
-app.get('/api',cors(corsOptions), (req, res) => {
+app.get('/api', (req, res) => {
 	res.json({message: "API root."})
 });
 

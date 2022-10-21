@@ -55,7 +55,6 @@ module.exports = {
 				// deny access
 				return res.json({success: false, message: "Invalid credentials."})
 			}
-
 			const token = signToken(user)
 			res.json({success: true, message: "Token attached.", token})
 		})
