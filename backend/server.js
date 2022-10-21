@@ -11,12 +11,13 @@ const
 	kontenRoutes = require('./routes/Konten.js')
 
 
-//allow cross origin requests
+//allow http requests from any origin and any header
 app.use(function(req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*")
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
-	next()
-})
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	next();
+});
+
 
 
 mongoose.set('useCreateIndex', true)
