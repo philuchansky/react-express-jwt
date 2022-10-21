@@ -28,8 +28,8 @@ app.get('/api',cors(corsOptions), (req, res) => {
 	res.json({message: "API root."})
 });
 
-app.use('/api/users', usersRoutes)
-app.use('/api/konten', kontenRoutes)
+app.use('/api/users',cors(corsOptions), usersRoutes)
+app.use('/api/konten',cors(corsOptions), kontenRoutes)
 
 
 
