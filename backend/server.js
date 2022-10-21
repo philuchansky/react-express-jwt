@@ -11,7 +11,7 @@ const
 	kontenRoutes = require('./routes/Konten.js')
 var cors = require('cors')
 app.use(cors())
-var whitelist = ['https://projectppk.nubisub.xyz/', 'https://projectppk.nubisub.xyz/signup']
+var whitelist = ['https://projectppk.nubisub.xyz/', 'https://apippk.nubisub.xyz/`', 'http://127.0.0.1:5173/']
 var corsOptions = {
 	origin: function (origin, callback) {
 		if (whitelist.indexOf(origin) !== -1) {
