@@ -47,29 +47,29 @@ function SignUp(props) {
             password: password,
             role: 'member',
         }
-        //
-        // const duplicate = await httpClient.cariUser(username).then((res) => {
-        //     return res;
-        // });
-        // if (duplicate){
-        //     if (duplicate.username === username) {
-        //         setErrorUsername('(Username already exist)')
-        //         console.log('username sudah ada')
-        //         return;
-        //     }
-        // }
-        //
-        // const emailDuplicate = await httpClient.cariEmail(email).then((res) => {
-        //     return res;
-        // });
-        // if (emailDuplicate){
-        //     if (emailDuplicate.email === email) {
-        //         setErrorEmail('(Email already in use)')
-        //         console.log('email sudah ada')
-        //         return;
-        //     }
-        // }
-        //
+
+        const duplicate = await httpClient.cariUser(username).then((res) => {
+            return res;
+        });
+        if (duplicate){
+            if (duplicate.username === username) {
+                setErrorUsername('(Username already exist)')
+                console.log('username sudah ada')
+                return;
+            }
+        }
+
+        const emailDuplicate = await httpClient.cariEmail(email).then((res) => {
+            return res;
+        });
+        if (emailDuplicate){
+            if (emailDuplicate.email === email) {
+                setErrorEmail('(Email already in use)')
+                console.log('email sudah ada')
+                return;
+            }
+        }
+
 
 
         httpClient.signUp(data).then(user => {
