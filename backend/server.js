@@ -5,7 +5,7 @@ const
 	logger = require('morgan'),
 	bodyParser = require('body-parser'),
 	mongoose = require('mongoose'),
-	MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/react-express-jwt',
+	MONGODB_URI = 'mongodb+srv://holaholo:holaholo@cluster0.2zsuxjd.mongodb.net/Cluster0?retryWrites=true&w=majority',
 	PORT = process.env.PORT || 3001,
 	usersRoutes = require('./routes/users.js'),
 	kontenRoutes = require('./routes/Konten.js')
