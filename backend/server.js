@@ -9,12 +9,16 @@ const
 	PORT = process.env.PORT || 3001,
 	usersRoutes = require('./routes/users.js'),
 	kontenRoutes = require('./routes/Konten.js')
-var cors = require('cors')
-app.use(cors())
-var corsOptions = {
-	origin: '*',
-	optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-}
+
+
+//allow cross origin requests
+app.use(function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*")
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+	next()
+})
+
+
 mongoose.set('useCreateIndex', true)
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, (err) => {
 	console.log(err || `Connected to MongoDB.`)
@@ -23,6 +27,10 @@ app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 app.use(logger('dev'))
 app.use(bodyParser.json())
+
+app.get('/',cors(corsOptions), (req, res) => {
+	res.render('dist/index')
+});
 
 app.get('/api',cors(corsOptions), (req, res) => {
 	res.json({message: "API root."})
