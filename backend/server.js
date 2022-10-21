@@ -11,9 +11,15 @@ const
 	kontenRoutes = require('./routes/Konten.js')
 var cors = require('cors')
 app.use(cors())
+var whitelist = ['https://projectppk.nubisub.xyz/', 'https://projectppk.nubisub.xyz/signup']
 var corsOptions = {
-	origin: 'http://projectppk.nubisub.xyz/',
-	optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+	origin: function (origin, callback) {
+		if (whitelist.indexOf(origin) !== -1) {
+			callback(null, true)
+		} else {
+			callback(new Error('Not allowed by CORS'))
+		}
+	}
 }
 mongoose.set('useCreateIndex', true)
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true }, (err) => {
