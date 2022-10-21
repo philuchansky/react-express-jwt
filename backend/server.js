@@ -28,16 +28,13 @@ app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 app.use(logger('dev'))
 app.use(bodyParser.json())
 
-app.get('/',cors(corsOptions), (req, res) => {
-	res.render('dist/index')
-});
 
-app.get('/api',cors(corsOptions), (req, res) => {
+app.get('/api', (req, res) => {
 	res.json({message: "API root."})
 });
 
-app.use('/api/users',cors(corsOptions), usersRoutes)
-app.use('/api/konten',cors(corsOptions), kontenRoutes)
+app.use('/api/users', usersRoutes)
+app.use('/api/konten', kontenRoutes)
 
 
 
