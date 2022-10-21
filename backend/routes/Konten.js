@@ -4,7 +4,7 @@ const
     kontenCtrl = require('../controllers/Konten.js'),
     verifyToken = require('../serverAuth.js').verifyToken
 
-// kontenRouter.use(verifyToken)
+kontenRouter.use(verifyToken)
 kontenRouter.route('/')
     .get(kontenCtrl.index)
     .post(kontenCtrl.create)
