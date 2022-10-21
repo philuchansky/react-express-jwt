@@ -5,18 +5,22 @@ import avatar from "../assets/avater.png";
 
 
 function Navbar(props) {
-
+    useMemo(() => {
+        if(!props.isLogin){
+            window.location.href = '/signin'
+        }
+    }, []);
 
 
     const [user, setUser] = useState(props.isLogin)
 
-    // if(!props.isLogin){
-    //     return (
-    //         <div>
-    //             <Navigate to="/signin" />
-    //         </div>
-    //     )
-    // }
+    if(!props.isLogin){
+        return (
+            <div>
+                <Navigate to="/signin" />
+            </div>
+        )
+    }
     return(
 
         <>
@@ -45,12 +49,12 @@ function Navbar(props) {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal p-0">
-                    {/*{*/}
-                    {/*    user.role === 'admin' ? (*/}
-                    {/*        <>*/}
-                    {/*        <li><Link  className="hover:bg-blue-700" to={'/buatkonten'}>Buat Konten</Link></li>*/}
-                    {/*        </>) : null*/}
-                    {/*        }*/}
+                    {
+                        user.role === 'admin' ? (
+                            <>
+                            <li><Link  className="hover:bg-blue-700" to={'/buatkonten'}>Buat Konten</Link></li>
+                            </>) : null
+                            }
                     <li><Link className="hover:bg-blue-700" to={'/member'}>Daftar Member</Link></li>
                     <li><Link  className="hover:bg-blue-700" to={'/aturkonten'}>Daftar Konten</Link></li>
                 </ul>
@@ -64,9 +68,9 @@ function Navbar(props) {
                     </label>
                     <ul tabIndex={0} className="mt-3 p-2 bg-[#0A0A23] text-white hover:bg-700  shadow-lg menu menu-compact dropdown-content rounded-md w-52">
                         <li>
-                            {/*<Link className="justify-between hover:bg-blue-700" to={'/member/edit/'+user.username}>*/}
-                            {/*    Profile*/}
-                            {/*</Link>*/}
+                            <Link className="justify-between hover:bg-blue-700" to={'/member/edit/'+user.username}>
+                                Profile
+                            </Link>
                         </li>
                         <li ><a className="hover:bg-blue-700" onClick={props.logout} >Logout</a></li>
                     </ul>
