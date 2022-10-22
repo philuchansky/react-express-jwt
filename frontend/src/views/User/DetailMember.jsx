@@ -1,6 +1,6 @@
 import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
-import httpClient from "../httpClient.js";
+import httpClient from "../../httpClient.js";
 function DetailMember() {
     const [data, setData] = useState([])
     let { username } = useParams();

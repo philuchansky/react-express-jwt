@@ -1,4 +1,4 @@
-import httpClient from "../httpClient.js";
+import httpClient from "../../httpClient.js";
 import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
 
@@ -42,13 +42,13 @@ function AturKonten(props) {
                                 <td>{item.date.substring(0, 10)}</td>
                                 <td>{item.user}</td>
                                 <td className="actionbutton">
-                                    <Link to={'/konten/'+item._id} href="">
+                                    <Link to={'/konten/'+item._id} href="frontend/src/Views/Content/AturKonten.jsx">
                                         <button className="btn btn-info rounded btn-sm text-white">Detail</button>
                                     </Link>
                                     {
                                         user.role === 'admin' && item.user === user.username ? (
                                             <>
-                                                <Link to={'/konten/edit/'+item._id} href="">
+                                                <Link to={'/konten/edit/'+item._id} href="frontend/src/Views/Content/AturKonten.jsx">
                                                     <button className="btn btn-success mx-2 rounded btn-sm text-white">Edit</button>
                                                 </Link>
                                                 <button onClick={() => handleDelete(item._id)} className="btn btn-error rounded btn-sm text-white">Delete</button>

@@ -7,14 +7,14 @@ import SignUp from "./Views/SignUp.jsx";
 import Navbar from "./Views/Navbar.jsx";
 import SignIn from "./Views/SignIn.jsx";
 import httpClient from "./httpClient.js";
-import AturMember from "./Views/AturMember.jsx";
-import AturKonten from "./Views/AturKonten.jsx";
+import AturMember from "./Views/User/AturMember.jsx";
+import AturKonten from "./Views/Content/AturKonten.jsx";
 import Beranda from "./Views/Beranda.jsx";
-import BuatKonten from "./Views/BuatKonten.jsx";
-import DetailMember from "./Views/DetailMember.jsx";
-import EditMember from "./Views/EditMember.jsx";
-import DetailKonten from "./Views/DetailKonten.jsx";
-import EditKonten from "./Views/EditKonten.jsx";
+import BuatKonten from "./Views/Content/BuatKonten.jsx";
+import DetailMember from "./Views/User/DetailMember.jsx";
+import EditMember from "./Views/User/EditMember.jsx";
+import DetailKonten from "./Views/Content/DetailKonten.jsx";
+import EditKonten from "./Views/Content/EditKonten.jsx";
 
 function App() {
 

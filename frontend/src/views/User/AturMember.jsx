@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import httpClient from "../httpClient.js";
+import httpClient from "../../httpClient.js";
 import {Link} from "react-router-dom";
 
 function AturMember(props) {
@@ -46,13 +46,13 @@ function AturMember(props) {
                             <td>{item.email}</td>
                             <td>{item.role}</td>
                             <td className='actionbutton'>
-                                <Link to={'/member/detail/'+item.username} href="">
+                                <Link to={'/member/detail/'+item.username} href="frontend/src/Views/User/AturMember.jsx">
                                     <button className="btn btn-info rounded btn-sm text-white">Detail</button>
                                 </Link>
                                 {
                                     user.role === 'admin' && item.role !== 'admin' ? (
                                         <>
-                                        <Link to={'/member/edit/'+item.username} href="">
+                                        <Link to={'/member/edit/'+item.username} href="frontend/src/Views/User/AturMember.jsx">
                                             <button className="btn btn-success mx-2 rounded btn-sm text-white">Edit</button>
                                         </Link>
                                         <button onClick={() => handleDelete(item.username)} className="btn btn-error rounded btn-sm text-white">Delete</button>

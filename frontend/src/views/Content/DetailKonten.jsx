@@ -1,5 +1,5 @@
 import {useParams} from "react-router-dom";
-import httpClient from "../httpClient.js";
+import httpClient from "../../httpClient.js";
 import {useEffect, useState} from "react";
 const DetailKonten = () => {
     const {id} = useParams()

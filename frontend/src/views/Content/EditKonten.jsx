@@ -1,7 +1,7 @@
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import {useEffect, useState} from "react";
-import httpClient from "../httpClient.js";
+import httpClient from "../../httpClient.js";
 import {useParams} from "react-router-dom";
 function EditKonten(props) {
     const [value, setValue] = useState('');

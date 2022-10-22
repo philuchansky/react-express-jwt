@@ -5,7 +5,7 @@ const
 	logger = require('morgan'),
 	bodyParser = require('body-parser'),
 	mongoose = require('mongoose'),
-	MONGODB_URI = 'mongodb+srv://holaholo:holaholo@cluster0.2zsuxjd.mongodb.net/Cluster0?retryWrites=true&w=majority',
+	MONGODB_URI = 'mongodb://localhost:27017/react-express-jwt',
 	PORT = process.env.PORT || 3001,
 	usersRoutes = require('./routes/users.js'),
 	kontenRoutes = require('./routes/Konten.js')
@@ -15,8 +15,7 @@ const cors = require('cors')
 app.use(cors(
 	{
 		origin: 'http://127.0.0.1:5173',
-		credentials: true,
-		// allowedHeaders: ['Content-Type', 'Authorization','X-Auth-Token']
+		credentials: true
 	}
 ))
 

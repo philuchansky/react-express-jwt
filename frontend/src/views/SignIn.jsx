@@ -15,9 +15,6 @@ function SignIn(props) {
         )
     }
 
-
-
-
     const submit = async (event) => {
             event.preventDefault();
         httpClient.logIn({username, password}).then((user) => {

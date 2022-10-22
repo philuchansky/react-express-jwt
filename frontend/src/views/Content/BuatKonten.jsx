@@ -3,7 +3,7 @@ import 'react-quill/dist/quill.snow.css';
 import {useEffect, useState} from "react";
 import {Navigate} from "react-router-dom";
 
-import httpClient from "../httpClient.js";
+import httpClient from "../../httpClient.js";
 function BuatKonten(props) {
     const [value, setValue] = useState('');
     const [title, setTitle] = useState('');

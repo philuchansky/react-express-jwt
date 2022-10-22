@@ -5,11 +5,11 @@ import avatar from "../assets/avater.png";
 
 
 function Navbar(props) {
-    useMemo(() => {
-        if(!props.isLogin){
-            window.location.href = '/signin'
-        }
-    }, []);
+    // useMemo(() => {
+    //     if(!props.isLogin){
+    //         window.location.href = '/signin'
+    //     }
+    // }, []);
 
 
     const [user, setUser] = useState(props.isLogin)

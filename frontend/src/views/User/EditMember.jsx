@@ -1,7 +1,7 @@
 import {Link, useParams} from "react-router-dom";
 import { redirect } from "react-router-dom";
 import {useEffect, useState} from "react";
-import httpClient from "../httpClient.js";
+import httpClient from "../../httpClient.js";
 function EditMember(props){
     const [nama, setNama] = useState('')
     const [email, setEmail] = useState('')

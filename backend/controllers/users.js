@@ -1,5 +1,7 @@
 const User = require('../models/User.js')
 const signToken = require('../serverAuth.js').signToken
+jwt = require('jsonwebtoken'),
+{ JWT_SECRET } = process.env
 
 module.exports = {
 	// list all users
@@ -51,11 +53,14 @@ module.exports = {
 		// check if the user exists
 		User.findOne({username: req.body.username}, (err, user) => {
 			// if there's no user or the password is invalid
-			if(!user || !user.validPassword(req.body.password)) {
+			if (!user || !user.validPassword(req.body.password)) {
 				// deny access
 				return res.json({success: false, message: "Invalid credentials."})
 			}
+			// if the user exists and the password is correct
+			// generate a token
 			const token = signToken(user)
+			// and send it back to the client
 			res.json({success: true, message: "Token attached.", token})
 		})
 	},

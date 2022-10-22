@@ -7,6 +7,9 @@ const httpClient = axios.create()
 //allow cors
 httpClient.defaults.withCredentials = true
 //cors from nodejs
+// httpClient.defaults.headers.common['Access-Control-Allow-Origin'] = '*'
+// allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+
 
 httpClient.getToken = function() {
 	return localStorage.getItem('token')
@@ -43,10 +46,12 @@ httpClient.updateUser = function(nama, data) {
 }
 
 httpClient.logIn = function(credentials) {
-	return this({ method: 'post', url: 'http://localhost:3001/api/users/authenticate/', data: credentials})
+	return this({ method: 'post', url: 'http://localhost:3001/api/users/authenticate/',data: credentials
+	})
 		.then((serverResponse) => {
 			const token = serverResponse.data.token
 			if(token) {
+
 				// sets token as an included header for all subsequent api requests
 				this.defaults.headers.common.token = this.setToken(token)
 				return jwtDecode(token)
