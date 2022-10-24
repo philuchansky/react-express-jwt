@@ -60,8 +60,9 @@ module.exports = {
 			// if the user exists and the password is correct
 			// generate a token
 			const token = signToken(user)
+
 			// and send it back to the client
-			res.json({success: true, message: "Token attached.", token})
+			res.json({success: true, message: "Token attached.", accessToken: token})
 		})
 	},
 	showByEmail: (req, res) => {
