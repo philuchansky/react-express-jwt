@@ -4,6 +4,7 @@ const
     kontenCtrl = require('../controllers/Konten.js'),
     verifyToken = require('../serverAuth.js').verifyToken
 
+// ALL ROUTES BELOW THIS LINE ARE PROTECTED
 kontenRouter.use(verifyToken)
 kontenRouter.route('/')
     .get(kontenCtrl.index)

@@ -1,13 +1,15 @@
 const User = require('../models/User.js')
+const {response} = require("express");
 const signToken = require('../serverAuth.js').signToken
-jwt = require('jsonwebtoken'),
-{ JWT_SECRET } = process.env
+jwt = require('jsonwebtoken')
+const JWT_SECRET = process.env.JWT_SECRET
 
 module.exports = {
+
 	// list all users
 	index: (req, res) => {
 		User.find({}, (err, users) => {
-			res.json(users)
+			res.json(users )
 		})
 	},
 
@@ -17,9 +19,6 @@ module.exports = {
 		User.findOne({username: req.params.id}, (err, user) => {
 			res.json(user)
 		})
-		// User.findById(req.params.id, (err, user) => {
-		// 	res.json(user)
-		// })
 	},
 
 	// create a new user
@@ -57,14 +56,12 @@ module.exports = {
 				// deny access
 				return res.json({success: false, message: "Invalid credentials."})
 			}
-			// if the user exists and the password is correct
-			// generate a token
 			const token = signToken(user)
-
-			// and send it back to the client
-			res.json({success: true, message: "Token attached.", accessToken: token})
+			res.json({message: "API root.", token: token})
 		})
 	},
+
+	// Find user by email
 	showByEmail: (req, res) => {
 		User.findOne({email: req.params.email}, (err, user) => {
 			res.json(user)

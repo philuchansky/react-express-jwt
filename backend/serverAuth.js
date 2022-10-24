@@ -1,11 +1,10 @@
 const
 	jwt = require('jsonwebtoken'),
 	User = require('./models/User.js'),
-	{ JWT_SECRET } = process.env
+	JWT_SECRET  = process.env.JWT_SECRET
 
 // function for creating tokens
 function signToken(user) {
-	// toObject() returns a basic js object with only the info from the db
 	const userData = user.toObject()
 	delete userData.password
 	return jwt.sign(userData, JWT_SECRET)
